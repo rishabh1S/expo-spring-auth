@@ -2,7 +2,11 @@ HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
+!**/src/main/java/com/rideshare/springapp/utils
 !**/src/test/**/target/
+
+### Environment ###
+.env
 
 ### STS ###
 .apt_generated
