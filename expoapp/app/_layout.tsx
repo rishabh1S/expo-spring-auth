@@ -9,7 +9,7 @@ import {
 import { useFonts } from "expo-font";
 import { Stack, useRouter } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "react-native-reanimated";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
@@ -34,16 +34,15 @@ function InitialLayout() {
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
     ...FontAwesome.font,
   });
+  const [appReady, setAppReady] = useState(false);
   const router = useRouter();
   const { isLoggedIn } = useAuthentication();
 
   useEffect(() => {
-    if (isLoggedIn) {
-      router.push("/");
-    } else {
-      router.push("/signup");
+    if (appReady && isLoggedIn !== undefined) {
+      router.push(isLoggedIn ? "/" : "/signup");
     }
-  }, [isLoggedIn]);
+  }, [appReady, isLoggedIn]);
 
   useEffect(() => {
     if (error) throw error;
@@ -51,7 +50,7 @@ function InitialLayout() {
 
   useEffect(() => {
     if (loaded) {
-      SplashScreen.hideAsync();
+      SplashScreen.hideAsync().then(() => setAppReady(true));
     }
   }, [loaded]);
 
