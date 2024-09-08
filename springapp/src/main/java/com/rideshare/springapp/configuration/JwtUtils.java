@@ -9,6 +9,7 @@ import java.util.function.Function;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
+import io.github.cdimascio.dotenv.Dotenv;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -17,7 +18,8 @@ import io.jsonwebtoken.security.Keys;
 
 @Component
 public class JwtUtils {
-    public static final String SECRET = "157338792F423F4428472B4B6250655368566D597133743677397A2443264628";
+
+    public static final String SECRET = Dotenv.load().get("JWT_SECRET");
 
     public Boolean validateToken(String token, UserDetails userDetails) {
         final String username = extractUsername(token);
