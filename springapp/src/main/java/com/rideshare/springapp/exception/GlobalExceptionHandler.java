@@ -15,7 +15,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(AuthenticationException.class)
     public ResponseEntity<String> handleAuthenticationException(AuthenticationException e) {
-        return ResponseEntity.status(401).body("Authentication Required");
+        return ResponseEntity.status(401).body("Authentication is Required");
     }
 
 }
