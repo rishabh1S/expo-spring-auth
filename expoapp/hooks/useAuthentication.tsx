@@ -1,12 +1,13 @@
 import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useRouter } from "expo-router";
 
 const BASE_URL = process.env.EXPO_PUBLIC_API_URL;
 
 export const useAuthentication = () => {
   const [loggedInUser, setLoggedInUser] = useState<any | null>(null);
-
+  const router = useRouter();
   const fetchLoggedInUser = useCallback(async () => {
     try {
       const user = await AsyncStorage.getItem("loginuser");
@@ -53,6 +54,7 @@ export const useAuthentication = () => {
     try {
       await AsyncStorage.clear();
       setLoggedInUser(null);
+      router.push("/login");
     } catch (error) {
       console.error("Error during logout", error);
     }

@@ -12,8 +12,8 @@ import lombok.Setter;
 public class LoginDTO {
     private int userId;
     private String email;
-    private String username;
-    private String mobileNumber;
-    private String userRole;
+    private String firstName;
+    private String lastName;
+    private UserRole userRole;
     private String token;
 }

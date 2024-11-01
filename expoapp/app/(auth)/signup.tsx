@@ -27,6 +27,7 @@ import { useAuthentication } from "~/hooks/useAuthentication";
 import { Formik } from "formik";
 import { useValidation } from "~/hooks/useValidation";
 import { signUpSchema } from "~/schemas/signupSchema";
+import { User } from "~/model/user";
 
 export default function SignUpPage() {
   const router = useRouter();
@@ -44,7 +45,14 @@ export default function SignUpPage() {
 
   const handleSignUp = async (values: any) => {
     setLoading(true);
-    const response = await register(values);
+    const user: User = {
+      email: values.email,
+      firstName: values.firstName,
+      lastName: values.lastName,
+      password: values.password,
+      userRole: values.userRole.value,
+    };
+    const response = await register(user);
 
     if (response) {
       Alert.alert("Success", "Registration successful!");
@@ -167,7 +175,7 @@ export default function SignUpPage() {
                     role
                       ? {
                           value: role.value,
-                          label: role.value === "user" ? "User" : "Admin",
+                          label: role.value === "USER" ? "User" : "Admin",
                         }
                       : undefined
                   );
@@ -182,10 +190,10 @@ export default function SignUpPage() {
                 <SelectContent insets={contentInsets} className="border w-full">
                   <SelectGroup>
                     <SelectLabel>User Role</SelectLabel>
-                    <SelectItem label="User" value="user">
+                    <SelectItem label="User" value="USER">
                       User
                     </SelectItem>
-                    <SelectItem label="Admin" value="admin">
+                    <SelectItem label="Admin" value="ADMIN">
                       Admin
                     </SelectItem>
                   </SelectGroup>

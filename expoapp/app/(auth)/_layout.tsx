@@ -10,21 +10,27 @@ export default function AuthLayout() {
       <Stack.Screen
         name="signup"
         options={{
-          headerTitle: () => <Text>Signup</Text>,
+          headerTitle: () => (
+            <Text className="text-gray-900 dark:text-gray-100">Signup</Text>
+          ),
           headerRight: () => (
             <Button
               variant="outline"
               size="sm"
               onPress={() => router.push("/login")}
             >
-              <Text>Login</Text>
+              <Text className="text-gray-900 dark:text-gray-100">Login</Text>
             </Button>
           ),
         }}
       />
       <Stack.Screen
         name="login"
-        options={{ headerTitle: () => <Text>Login</Text> }}
+        options={{
+          headerTitle: () => (
+            <Text className="text-gray-900 dark:text-gray-100">Login</Text>
+          ),
+        }}
       />
     </Stack>
   );

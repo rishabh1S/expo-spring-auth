@@ -54,8 +54,8 @@ public class AuthController {
                 LoginDTO userDTO = new LoginDTO();
                 userDTO.setUserId(myUser.getUserId());
                 userDTO.setEmail(myUser.getEmail());
-                userDTO.setMobileNumber(myUser.getMobileNumber());
-                userDTO.setUsername(myUser.getUsername());
+                userDTO.setFirstName(myUser.getFirstName());
+                userDTO.setLastName(myUser.getLastName());
                 userDTO.setUserRole(myUser.getUserRole());
                 userDTO.setToken(jwtService.GenerateToken(myUser.getEmail()));
 
