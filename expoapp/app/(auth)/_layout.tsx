@@ -1,10 +1,10 @@
-import { Stack, useRouter } from "expo-router";
+import { Stack } from "expo-router";
 import React from "react";
 import { Button } from "~/components/ui/button";
 import { Text } from "react-native";
+import { ThemeToggle } from "~/components/ThemeToggle";
 
 export default function AuthLayout() {
-  const router = useRouter();
   return (
     <Stack>
       <Stack.Screen
@@ -14,12 +14,8 @@ export default function AuthLayout() {
             <Text className="text-gray-900 dark:text-gray-100">Signup</Text>
           ),
           headerRight: () => (
-            <Button
-              variant="outline"
-              size="sm"
-              onPress={() => router.push("/login")}
-            >
-              <Text className="text-gray-900 dark:text-gray-100">Login</Text>
+            <Button variant="ghost">
+              <ThemeToggle />
             </Button>
           ),
         }}
@@ -29,6 +25,11 @@ export default function AuthLayout() {
         options={{
           headerTitle: () => (
             <Text className="text-gray-900 dark:text-gray-100">Login</Text>
+          ),
+          headerRight: () => (
+            <Button variant="ghost">
+              <ThemeToggle />
+            </Button>
           ),
         }}
       />

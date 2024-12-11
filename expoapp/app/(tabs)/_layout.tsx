@@ -1,9 +1,10 @@
 import React from "react";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-import { Tabs } from "expo-router";
-
 import Colors from "~/schemas/Colors";
+import { Tabs } from "expo-router";
 import { useColorScheme } from "react-native";
+import { Button } from "~/components/ui/button";
+import { ThemeToggle } from "~/components/ThemeToggle";
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props: {
@@ -23,6 +24,11 @@ export default function TabLayout() {
         // Disable the static render of the header on web
         // to prevent a hydration error in React Navigation v6.
         headerShown: true,
+        headerRight: () => (
+          <Button variant="ghost">
+            <ThemeToggle />
+          </Button>
+        ),
       }}
     >
       <Tabs.Screen

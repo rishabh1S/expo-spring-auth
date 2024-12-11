@@ -210,6 +210,16 @@ export default function SignUpPage() {
                 </Text>
                 {loading && <ActivityIndicator size="small" color="#fff" />}
               </Button>
+              <View className="flex flex-row">
+                <Text className="text-gray-900 dark:text-gray-100">
+                  Already have an account?{" "}
+                </Text>
+                <Pressable onPress={() => router.push("/login")}>
+                  <Text className="font-semibold text-gray-900 dark:text-gray-100">
+                    Login
+                  </Text>
+                </Pressable>
+              </View>
             </View>
           )}
         </Formik>

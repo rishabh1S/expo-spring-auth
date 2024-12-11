@@ -109,6 +109,16 @@ export default function LoginPage() {
                 </Text>
                 {loading && <ActivityIndicator size="small" color="#fff" />}
               </Button>
+              <View className="flex flex-row">
+                <Text className="text-gray-900 dark:text-gray-100">
+                  New here?{" "}
+                </Text>
+                <Pressable onPress={() => router.push("/signup")}>
+                  <Text className="font-semibold text-gray-900 dark:text-gray-100">
+                    Create an account
+                  </Text>
+                </Pressable>
+              </View>
             </View>
           )}
         </Formik>

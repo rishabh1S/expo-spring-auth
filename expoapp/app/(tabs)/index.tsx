@@ -1,5 +1,4 @@
 import { StyleSheet, View, Text } from "react-native";
-import { ThemeToggle } from "~/components/ThemeToggle";
 import { Button } from "~/components/ui/button";
 import { useAuthentication } from "~/hooks/useAuthentication";
 
@@ -12,9 +11,6 @@ export default function TabOneScreen() {
       <View style={styles.separator} />
       <Button onPress={logout}>
         <Text className="text-gray-100 dark:text-gray-900">Logout</Text>
-      </Button>
-      <Button variant="secondary">
-        <ThemeToggle />
       </Button>
     </View>
   );
