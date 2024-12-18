@@ -1,5 +1,10 @@
 package com.rideshare.springapp.model;
 
+import java.time.LocalDateTime;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -28,6 +33,12 @@ public class User {
     private String firstName;
     private String lastName;
     private String password;
+    @CreationTimestamp
+    @Column(updatable = false, nullable = false)
+    private LocalDateTime createdAt;
+    @UpdateTimestamp
+    @Column(nullable = false)
+    private LocalDateTime updatedAt;
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private UserRole userRole;
