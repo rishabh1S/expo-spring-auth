@@ -13,11 +13,8 @@ export default function AuthLayout() {
           headerTitle: () => (
             <Text className="text-gray-900 dark:text-gray-100">Signup</Text>
           ),
-          headerRight: () => (
-            <Button variant="ghost">
-              <ThemeToggle />
-            </Button>
-          ),
+          headerRight: () => <ThemeToggle />,
+          headerLeft: () => <></>,
         }}
       />
       <Stack.Screen
@@ -26,11 +23,8 @@ export default function AuthLayout() {
           headerTitle: () => (
             <Text className="text-gray-900 dark:text-gray-100">Login</Text>
           ),
-          headerRight: () => (
-            <Button variant="ghost">
-              <ThemeToggle />
-            </Button>
-          ),
+          headerRight: () => <ThemeToggle />,
+          headerLeft: () => <></>,
         }}
       />
     </Stack>

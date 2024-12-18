@@ -2,7 +2,12 @@ import "~/global.css";
 
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Theme, ThemeProvider } from "@react-navigation/native";
+import {
+  DarkTheme,
+  DefaultTheme,
+  Theme,
+  ThemeProvider,
+} from "@react-navigation/native";
 import { SplashScreen, Stack, useRouter } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import * as React from "react";
@@ -10,18 +15,18 @@ import { Platform } from "react-native";
 import { NAV_THEME } from "~/lib/constants";
 import { useColorScheme } from "~/lib/useColorScheme";
 import { PortalHost } from "@rn-primitives/portal";
-import { setAndroidNavigationBar } from "~/lib/android-navigation-bar";
 import { useFonts } from "expo-font";
+import { setAndroidNavigationBar } from "~/lib/android-navigation-bar";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { useEffect, useState } from "react";
 import { useAuthentication } from "~/hooks/useAuthentication";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 const LIGHT_THEME: Theme = {
-  dark: false,
+  ...DefaultTheme,
   colors: NAV_THEME.light,
 };
 const DARK_THEME: Theme = {
-  dark: true,
+  ...DarkTheme,
   colors: NAV_THEME.dark,
 };
 
