@@ -12,10 +12,5 @@ import com.rideshare.springapp.model.User;
 public interface UserRepo extends JpaRepository<User, Integer> {
     public Optional<User> findByEmail(String email);
 
-    public Optional<User> findById(int id);
-
     public Optional<List<User>> findByUserRole(String role);
-
-    public boolean existsByUserRole(String role);
-
 }

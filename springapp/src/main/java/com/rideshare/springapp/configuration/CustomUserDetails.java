@@ -11,8 +11,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.rideshare.springapp.model.User;
 
 public class CustomUserDetails implements UserDetails {
-    private String username;
-    private String password;
+    private final String username;
+    private final String password;
     Collection<? extends GrantedAuthority> authorities;
 
     public CustomUserDetails(User user) {

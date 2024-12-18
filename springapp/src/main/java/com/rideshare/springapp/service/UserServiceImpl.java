@@ -18,22 +18,22 @@ public class UserServiceImpl implements UserService {
     @Autowired
     PasswordEncoder passwordEncoder;
 
+    @Override
     public List<User> getAllUsers() {
         return userRepo.findAll();
     }
 
+    @Override
     public User getUserById(int userId) {
-        Optional<User> user = userRepo.findById(userId);
-        if (user.isPresent()) {
-            return user.get();
-        }
-        return null;
+        return userRepo.findById(userId).orElse(null);
     }
 
+    @Override
     public User findUserByEmail(String email) {
         return userRepo.findByEmail(email).orElse(null);
     }
 
+    @Override
     public User createUser(User user) {
         User existingUser = userRepo.findByEmail(user.getEmail()).orElse(null);
         if (existingUser != null) {
@@ -43,6 +43,7 @@ public class UserServiceImpl implements UserService {
         return userRepo.save(user);
     }
 
+    @Override
     public User updateUser(int userId, User userDetails) {
         Optional<User> getUser = userRepo.findById(userId);
         if (getUser.isPresent()) {
@@ -57,6 +58,7 @@ public class UserServiceImpl implements UserService {
         return null;
     }
 
+    @Override
     public void deleteUser(int userId) {
         if (userRepo.existsById(userId)) {
             userRepo.deleteById(userId);
@@ -65,9 +67,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> getUserByRole(String userRole) {
-        if (userRepo.existsByUserRole(userRole)) {
-            return userRepo.findByUserRole(userRole).get();
-        }
-        return null;
+        return userRepo.findByUserRole(userRole).orElse(List.of());
     }
 }
