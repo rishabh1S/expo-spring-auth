@@ -47,8 +47,6 @@ export default function SignUpPage() {
     setLoading(true);
     const user: User = {
       email: values.email,
-      firstName: values.firstName,
-      lastName: values.lastName,
       password: values.password,
       userRole: values.userRole.value,
     };
@@ -71,8 +69,6 @@ export default function SignUpPage() {
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <Formik
           initialValues={{
-            firstName: "",
-            lastName: "",
             email: "",
             password: "",
             confirmPassword: "",
@@ -91,32 +87,6 @@ export default function SignUpPage() {
             setFieldValue,
           }) => (
             <View className="flex-1 justify-center items-center gap-4 px-4">
-              <View className="flex flex-row justify-center items-center gap-4">
-                <View className="flex-1 flex items-center gap-2">
-                  <Input
-                    placeholder="First Name"
-                    value={values.firstName}
-                    onChangeText={handleChange("firstName")}
-                    onBlur={handleBlur("firstName")}
-                    className="rounded-full border px-4 py-3 w-full"
-                  />
-                  {errors.firstName && touched.firstName && (
-                    <Text className="text-red-500">{errors.firstName}</Text>
-                  )}
-                </View>
-                <View className="flex-1 flex items-center gap-2">
-                  <Input
-                    placeholder="Last Name"
-                    value={values.lastName}
-                    onChangeText={handleChange("lastName")}
-                    onBlur={handleBlur("lastName")}
-                    className="rounded-full border px-4 py-3 w-full"
-                  />
-                  {errors.lastName && touched.lastName && (
-                    <Text className="text-red-500">{errors.lastName}</Text>
-                  )}
-                </View>
-              </View>
               <View className="w-full flex items-center gap-2">
                 <Input
                   placeholder="Email"

@@ -49,8 +49,6 @@ public class UserServiceImpl implements UserService {
         if (getUser.isPresent()) {
             User user = getUser.get();
             user.setEmail(userDetails.getEmail());
-            user.setFirstName(userDetails.getFirstName());
-            user.setLastName(userDetails.getLastName());
             user.setPassword(userDetails.getPassword());
             user.setUserRole(userDetails.getUserRole());
             return userRepo.save(user);

@@ -30,8 +30,6 @@ public class User {
     private int userId;
     @Column(unique = true, nullable = false)
     private String email;
-    private String firstName;
-    private String lastName;
     private String password;
     @CreationTimestamp
     @Column(updatable = false, nullable = false)
